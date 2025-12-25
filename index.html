@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matcha Mother</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Matcha Mother</h1>
+    <div class="toggles">
+      <button id="focusBtn" class="ghost">Focus: Off</button>
+      <button id="musicBtn" class="ghost">Music: Off</button>
+    </div>
+  </header>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <!-- Overlay: Menu / Results / Receipt -->
+  <div id="overlay" class="overlay">
+    <div class="overlayCard">
+      <h2 id="overlayTitle">Matcha Mother</h2>
+      <p id="overlayDesc" class="muted">
+        Drag ingredients into the cup, tap whisk fast, then serve customers before they leave.
+      </p>
+
+      <div class="grid2" id="menuGrid">
+        <div class="cardMini">
+          <h3>Difficulty</h3>
+          <div class="row">
+            <button class="diffBtn" data-diff="easy">Easy</button>
+            <button class="diffBtn" data-diff="medium">Medium</button>
+            <button class="diffBtn" data-diff="hard">Hard</button>
+          </div>
+          <p class="tiny muted" id="diffInfo">Pick a difficulty.</p>
+        </div>
+
+        <div class="cardMini">
+          <h3>Level</h3>
+          <p class="muted tiny" id="levelInfo">Level 1: Hot + Boba · Goal $120</p>
+          <div class="row">
+            <button id="startBtn">Start Shift</button>
+            <button id="resetProgressBtn" class="ghost">Reset Progress</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="receiptEl" class="receipt hidden"></div>
+
+      <hr class="sep"/>
+
+      <div class="row spread">
+        <div class="tiny muted">
+          Controls: Drag ingredients → Tap whisk fast → Tap Serve
+        </div>
+        <div class="tiny muted">
+          Tip drains each second after patience runs out.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="layout">
+    <section class="gamePanel">
+      <canvas id="game"></canvas>
+      <p class="hint" id="hintEl">
+        Tip: Tap “Focus” to hide the UI so the game fills your screen.
+      </p>
+    </section>
+
+    <aside class="uiPanel" id="uiPanel">
+      <div class="card">
+        <h2>Shift</h2>
+        <div class="stats">
+          <div>Difficulty: <strong id="diffEl">—</strong></div>
+          <div>Level: <strong id="levelEl">1</strong></div>
+          <div>Time: <strong id="timeEl">—</strong></div>
+          <div>Goal: <strong id="goalEl">—</strong></div>
+          <div>Earned: <strong id="earnedEl">$0</strong></div>
+          <div>Served: <strong id="servedEl">0</strong></div>
+          <div>Combo: <strong id="comboEl">0</strong></div>
+          <div>Best Combo: <strong id="bestComboEl">0</strong></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Order</h2>
+        <p id="orderEl" class="order">—</p>
+        <p id="orderLineEl" class="muted">—</p>
+        <div class="stats">
+          <div>Drink: <strong id="drinkEl">—</strong></div>
+          <div>Base: <strong id="baseEl">$5</strong></div>
+          <div>Tip: <strong id="tipEl">$7</strong></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Actions</h2>
+        <p class="muted tiny">
+          1) Drag correct ingredients into the cup<br/>
+          2) Tap whisk fast to fill whisk meter<br/>
+          3) Tap Serve
+        </p>
+        <p id="feedbackEl" class="feedback" aria-live="polite"></p>
+
+        <div class="row">
+          <button id="serveBtn" disabled>Serve</button>
+          <button id="pauseBtn" class="ghost">Pause</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
